@@ -33,15 +33,16 @@ public class AuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
+        sharedPreferences = getSharedPreferences("MySp",MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        if (sharedPreferences.getInt("State",0)==1){
+            startActivity(new Intent(AuthActivity.this,MainActivity.class));
+            finish();
+        }
+
         initial();
 
-        checkStatus();
-    }
-
-    private void checkStatus() {
-        if (sharedPreferences.getString("Status","").equals("SignIn")){
-            startActivity(new Intent(AuthActivity.this,MainActivity.class));
-        }
     }
 
     public void signInBtnClick(View view) {
@@ -75,7 +76,7 @@ public class AuthActivity extends AppCompatActivity {
                             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    editor.putString("Status","SignIn").commit();
+                                    editor.putInt("State",1).commit();
                                     startActivity(new Intent(AuthActivity.this,MainActivity.class));
                                 }
                             });
@@ -100,8 +101,6 @@ public class AuthActivity extends AppCompatActivity {
         emailEt = findViewById(R.id.emailEt);
         passwordEt = findViewById(R.id.passwordEt);
         firebaseAuth = FirebaseAuth.getInstance();
-        sharedPreferences = getSharedPreferences("MySp",MODE_PRIVATE);
-        editor = sharedPreferences.edit();
         progress = findViewById(R.id.progress);
     }
 }
