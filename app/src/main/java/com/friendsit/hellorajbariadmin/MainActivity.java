@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         hashMap.put("Tit",binding.titleEt.getText().toString());
         hashMap.put("Pho",binding.phoneEt.getText().toString());
         hashMap.put("Ema",binding.emailEt.getText().toString());
-        hashMap.put("Off",binding.officeEt.getText().toString());
         hashMap.put("Add",binding.addressEt.getText().toString());
         hashMap.put("Det",binding.detailsEt.getText().toString());
         hashMap.put("Key",pushKey);
@@ -89,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     binding.titleEt.setText("");
                     binding.phoneEt.setText("");
                     binding.emailEt.setText("");
-                    binding.officeEt.setText("");
                     binding.addressEt.setText("");
                     binding.detailsEt.setText("");
                 }else{
